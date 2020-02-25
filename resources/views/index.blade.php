@@ -26,7 +26,7 @@
             <span>Shortlink Success !</span>
                 
             @else
-            <span>http://example.com</span>
+            <span><a href="127.0.0.1:8000/mdxq"> http://example.com</a></span>
                 
             @endif
               </div>

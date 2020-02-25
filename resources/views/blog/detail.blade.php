@@ -51,11 +51,14 @@
             </div>
             <div class="desc align-self-md-center">
               <h3>Jeck olson</h3>
-              <p id="shortlink">A programmer is someone who is able to solve problems using a programming language. They have many abilities consisting of various levels, they are good at writing code, understand algorithms and often work alone.</p>
+              <p >A programmer is someone who is able to solve problems using a programming language. They have many abilities consisting of various levels, they are good at writing code, understand algorithms and often work alone.</p>
             </div>
           </div>
 
           @if ($link)
+          <div id="shortlink" class="my-3">
+            <br><br>
+          </div>
             <div class="row mt-3"  >
               <div class="col-md-12 text-center p-3">
                 <div id="download" style="display : none;">
@@ -64,7 +67,7 @@
               </div>
             </div>
             <div class="row mt-3"  >
-              <div class="col-md-12 text-center p-3">
+              <div class="col-md-12 text-center">
                <div id="iklan">
                </div>
               </div>

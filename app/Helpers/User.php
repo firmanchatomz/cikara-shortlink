@@ -69,6 +69,11 @@ class User {
         $slink = DB::table('slink')->orderby('view','DESC')->whereMonth('created_at',$bulan)->limit(3)->get();
         return $slink;
     }
+    public static function chart4($bulan)
+    {
+        $slink = DB::table('referer')->orderby('jumlah','DESC')->whereMonth('created_at',$bulan)->limit(3)->get();
+        return $slink;
+    }
 
 
 

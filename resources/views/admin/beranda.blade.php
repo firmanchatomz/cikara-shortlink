@@ -154,6 +154,55 @@
   <div class="col-md-12 mb-3">
     <div class="card">
       <div class="card-header bg-primary text-white">
+        Top Referring Sites <span class="float-right">Top Rate {{ bulan_indo($datatopreferer)}}</span>
+      </div>
+      <div class="card-body">
+        <div class="row  justify-content-end">
+          <div class="col-3">
+            <form action="{{ url('/cikara/post/topreferer')}}" method="post">
+              @csrf
+              <div class="form-group">
+                <select name="bulan" id="" class="form-control" onchange="this.form.submit()">
+                  @foreach (bulan() as $index => $nama)
+                      <option value="{{ $index }}" @if ($datatopreferer == $index)
+                          selected
+                      @endif>{{ $nama }}</option>
+                  @endforeach
+                </select>
+              </div>
+            </form>
+          </div>
+        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Rate</th>
+              <th scope="col">Link references</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach (Db::chart4($datatopreferer) as $item)
+              <tr>
+                <th scope="row">{{ $loop->iteration }}</th>
+                <td>{{ substr($item->link,0,50). anymore($item->link)}}</td>
+                <td>{{ $item->jumlah }}</td>
+              </tr>
+            @endforeach
+            @if (count(Db::chart4($datatopreferer)) == 0)
+            <tr class="text-center">
+              <td colspan="4">Tidak ada statistik</td>
+            </tr>
+                
+            @endif
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 mb-3">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
         Statistik View per tanggal <span class="float-right">{{ bulan_indo($datatanggal)}}</span>
       </div>
       <div class="card-body">

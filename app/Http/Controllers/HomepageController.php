@@ -8,6 +8,7 @@ use App\Artikel;
 use App\Kategori;
 use App\Domain;
 use App\Menu;
+use App\Referer;
 
 class HomepageController extends Controller
 {
@@ -30,6 +31,28 @@ class HomepageController extends Controller
             } else {
                 // save shortlink to session
                 $request->session()->put('shortlink',$shortlink);
+                
+                // save referer
+                $link_referer = @$_SERVER[HTTP_REFERER];
+                if (is_null($link_referer)) {
+                    $link_referer = 'gagal';
+                }
+                    // pengecekan link referer ada atau tidak
+                    $referer = Referer::where('link',$link_referer)->first();
+                    if ($referer) {
+                        // data jumlah ditambah 1
+                        $jumlah = $referer->jumlah + 1;
+                        // data referer di update
+                        Referer::where('id',$referer->id)->update([
+                            'jumlah' => $jumlah,
+                        ]);
+                    } else {
+                        // jika tidak ada maka membuat data baru
+                        Referer::create([
+                            'link' => $link_referer,
+                            'jumlah' => 1,
+                        ]);
+                    }
                 $artikel = Artikel::find(randomid());
                 return redirect('/blog/detail/'.$artikel->id);
             }

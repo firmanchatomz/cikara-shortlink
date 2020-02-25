@@ -38,8 +38,13 @@ class HomeController extends Controller
         } else {
             $datatanggal = Date('m');
         }
+        if ($request->session()->has('formtopreferer')) {
+            $datatopreferer = $request->session()->get('formtopreferer');
+        } else {
+            $datatopreferer = Date('m');
+        }
         
-        return view('admin.beranda',compact('jumlahview','datatoprate','datatanggal'));
+        return view('admin.beranda',compact('jumlahview','datatoprate','datatanggal','datatopreferer'));
     }
 
     public function shortlink()
@@ -55,6 +60,9 @@ class HomeController extends Controller
             switch ($data) {
                 case 'toprate':
                     $request->session()->put('formtoprate',$bulan);
+                    break;
+                case 'topreferer':
+                    $request->session()->put('formtopreferer',$bulan);
                     break;
                 case 'tanggal':
                     $request->session()->put('formtanggal',$bulan);
