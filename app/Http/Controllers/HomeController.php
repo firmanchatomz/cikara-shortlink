@@ -55,7 +55,7 @@ class HomeController extends Controller
     }
     public function referer()
     {
-        $referer = Referer::all();
+        $referer = Referer::where('link','<>','gagal')->get();
         return view('admin.referer.index',compact('referer'));
     }
 
