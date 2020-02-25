@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Slink;
+use App\Referer;
 use Date;
 
 class HomeController extends Controller
@@ -51,6 +52,11 @@ class HomeController extends Controller
     {
         $slink = Slink::all();
         return view('admin.slink.index',compact('slink'));
+    }
+    public function referer()
+    {
+        $referer = Referer::all();
+        return view('admin.referer.index',compact('referer'));
     }
 
     public function post($data, Request $request)

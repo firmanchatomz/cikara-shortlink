@@ -26,6 +26,7 @@ Route::get('/cikara/login','Auth\LoginController@showLoginForm');
 Route::post('/cikara/logout','Auth\LoginController@logout');
 Route::post('/cikara/login','Auth\LoginController@login');
 Route::get('/cikara/shortlink','HomeController@shortlink');
+Route::get('/cikara/referer','HomeController@referer');
 Route::post('/cikara/post/{data}','HomeController@post');
 
 Route::get('/cikara/home', 'HomeController@index');

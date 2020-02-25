@@ -133,6 +133,12 @@
               <span class="menu-title">Shortlink</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href={{ url('/cikara/referer')}}>
+              <i class="menu-icon mdi mdi-help-network"></i>
+              <span class="menu-title">Site Referer</span>
+            </a>
+          </li>
           @endif
           @if (Auth::user()->level == 'user')
             <li class="nav-item">
